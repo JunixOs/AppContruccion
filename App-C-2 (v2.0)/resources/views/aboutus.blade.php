@@ -90,6 +90,68 @@
         box-shadow: 0 0 0 0 rgb(218 103 68 / 0%);
         }
         }
+
+        /**/
+
+        .card {
+        width: 350px;
+        height: 400px;
+        background: #15001f;
+        border: 1px solid #c042ff;
+        font-size: 14px;
+        font-family: monospace;
+        overflow: auto;
+        }
+
+        .titlebar {
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        font-size: 21px;
+        font-weight: 450;
+        background-color: #2e0043;
+        width: 100%;
+        text-align: right;
+        }
+
+        .card button {
+        width: 40px;
+        height: 35px;
+        margin-left: -5px;
+        border: 0;
+        outline: 0;
+        background: transparent;
+        transition: 0.2s;
+        }
+
+        button svg path, 
+        button svg rect, 
+        button svg polygon {
+        fill: #ffffff;
+        }
+
+        button svg {
+        width: 10px;
+        height: 10px;
+        }
+
+        .close:hover {
+        background-color: #e81123;
+        }
+
+        .maximize:hover {
+        background-color: #c042ff2e;
+        }
+
+        .minimize:hover {
+        background-color: #c042ff2e;
+        }
+
+        #pre {
+        overflow: auto;
+        width: 100%;
+        padding: 10px;
+        height: auto;
+        color: #bafff8;
+        }
     </style>
     <body>
         <div class="container">
@@ -97,23 +159,44 @@
                 <h1 class="d-flex align-items-center col-md-3 mb-2 mb-md-0 text-dark text-decoration-none" >Sobre Nosotros</h1>
             </header>
         </div>
+        <div class="card">
+                <div class="titlebar">
+                <span class="buttons">
+                    <button class="minimize">
+                            <svg x="0px" y="0px" viewBox="0 0 10.2 1"><rect x="0" y="50%" width="15.2" height="1"></rect></svg>
+                    </button>
+                    <button class="maximize">
+                            <svg viewBox="0 0 10 10"><path d="M0,0v10h10V0H0z M9,9H1V1h8V9z"></path></svg>
+                        </button>
+                    <button class="close">
+                            <svg viewBox="0 0 10 10"><polygon points="10.2,0.7 9.5,0 5.1,4.4 0.7,0 0,0.7 4.4,5.1 0,9.5 0.7,10.2 5.1,5.8 9.5,10.2 10.2,9.5 5.8,5.1"></polygon></svg>
+                    </button>
+                </span>
+                </div>
+                <div class="cppcode">
+                    <pre id="pre">
+                        <p>
+                            ClothSha es un proyecto de desarrollo web independiente orientado al 
+                            <a href="https://www.un.org/sustainabledevelopment/es/sustainable-consumption-production/" style="color: #000000; text-decoration:red dotted underline">"Objetivo de Desarrollo Sostenible 12"</a> .
+                            En ClothSha usted podra subir una imagen y descripcion de las prendas que actualmente ya no use, para que aquellos que necesiten las prendas se pongan en contacto con usted
+                            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Autem deserunt alias quia asperiores veritatis aperiam nisi, animi doloribus velit vitae sint. Optio aliquid repellat assumenda, harum amet ab in rerum iusto reiciendis temporibus excepturi quidem porro magni voluptas quaerat perspiciatis modi aspernatur ducimus quibusdam non aut 
+                            ipsa unde voluptatem laudantium? Saepe culpa incidunt ut quos quia minus reprehenderit illo officiis dicta esse tenetur accusantium corporis unde, a ea hic, provident iste officia nam soluta id consequatur 
+                            atque! Illum illo itaque aspernatur laudantium ipsum nulla odit quam labore maxime enim assumenda fuga molestias odio, sapiente excepturi recusandae cum sunt. Pariatur minima odit nesciunt aliquam deserunt aspernatur ex amet nisi reiciendis dolorum placeat officiis illo iste obcaecati, eius minus ut perferendis accusamus eligendi, temporibus enim? Delectus quas itaque omnis expedita debitis nemo minima eligendi dolorum voluptatibus quidem facere 
+                            provident autem earum reiciendis iste illum tempore dicta, laudantium sapiente saepe quo velit quaerat laboriosam. Fugit, libero consequatur! In provident quam laudantium culpa omnis ullam fugiat, pariatur repudiandae nisi id veritatis commodi ducimus, quae quis quidem? Dolore exercitationem illum earum libero harum officia. In neque amet consectetur! Velit recusandae cumque, officiis qui magni provident optio voluptates magnam hic alias earum quia quod corrupti, voluptate quis tempora. Maxime, distinctio! Ea, pariatur voluptatem? Possimus, veritatis neque! Sunt tenetur deserunt debitis dicta? Inventore explicabo cupiditate est iusto impedit, et, dignissimos animi exercitationem optio, 
+                            qui ipsa nulla officiis necessitatibus ipsum culpa quisquam minima quibusdam. Alias eligendi assumenda atque ullam id non dicta, deserunt molestias placeat provident est quia animi quisquam tenetur nostrum natus veritatis esse quos fuga dignissimos incidunt aspernatur reiciendis doloremque. Nemo totam fugiat debitis nihil optio nobis, 
+                            explicabo blanditiis quo incidunt vel labore dolores ullam pariatur hic deleniti dolorum ducimus maxime nostrum laborum vero! Quod quas molestiae suscipit recusandae animi nobis voluptas quo fugit labore mollitia cum tempora iusto, saepe natus id enim doloremque nostrum iste fugiat ipsam 
+                            sapiente. Ad ex deserunt vel, obcaecati soluta nulla, eum inventore delectus porro et iusto eos autem neque qui, necessitatibus sint rem incidunt accusamus veniam possimus eaque libero? Perferendis dolorem temporibus, delectus rem ullam commodi explicabo reiciendis voluptates labore ut consequatur quisquam illum, pariatur odit quo tempora fuga vero. Vitae assumenda consectetur molestiae expedita corrupti, magnam quasi officia facere aspernatur incidunt est? Cum et suscipit explicabo inventore, eaque dolorem nihil iure laboriosam, architecto fugit distinctio. Fugiat provident hic rem modi, ducimus quaerat expedita libero dolor a eligendi, necessitatibus sequi.
+                        </p>
+                    </pre>
+                </div>
+            </div>
         <article class="container">
             <p class="text_content"> 
-                ClothSha es un proyecto de desarrollo web independiente orientado al 
-                <a href="https://www.un.org/sustainabledevelopment/es/sustainable-consumption-production/" style="color: #000000; text-decoration:red dotted underline">"Objetivo de Desarrollo Sostenible 12"</a> .
-                En ClothSha usted podra subir una imagen y descripcion de las prendas que actualmente ya no use, para que aquellos que necesiten las prendas se pongan en contacto con usted
-                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Autem deserunt alias quia asperiores veritatis aperiam nisi, animi doloribus velit vitae sint. Optio aliquid repellat assumenda, harum amet ab in rerum iusto reiciendis temporibus excepturi quidem porro magni voluptas quaerat perspiciatis modi aspernatur ducimus quibusdam non aut 
-                ipsa unde voluptatem laudantium? Saepe culpa incidunt ut quos quia minus reprehenderit illo officiis dicta esse tenetur accusantium corporis unde, a ea hic, provident iste officia nam soluta id consequatur 
-                atque! Illum illo itaque aspernatur laudantium ipsum nulla odit quam labore maxime enim assumenda fuga molestias odio, sapiente excepturi recusandae cum sunt. Pariatur minima odit nesciunt aliquam deserunt aspernatur ex amet nisi reiciendis dolorum placeat officiis illo iste obcaecati, eius minus ut perferendis accusamus eligendi, temporibus enim? Delectus quas itaque omnis expedita debitis nemo minima eligendi dolorum voluptatibus quidem facere 
-                provident autem earum reiciendis iste illum tempore dicta, laudantium sapiente saepe quo velit quaerat laboriosam. Fugit, libero consequatur! In provident quam laudantium culpa omnis ullam fugiat, pariatur repudiandae nisi id veritatis commodi ducimus, quae quis quidem? Dolore exercitationem illum earum libero harum officia. In neque amet consectetur! Velit recusandae cumque, officiis qui magni provident optio voluptates magnam hic alias earum quia quod corrupti, voluptate quis tempora. Maxime, distinctio! Ea, pariatur voluptatem? Possimus, veritatis neque! Sunt tenetur deserunt debitis dicta? Inventore explicabo cupiditate est iusto impedit, et, dignissimos animi exercitationem optio, 
-                qui ipsa nulla officiis necessitatibus ipsum culpa quisquam minima quibusdam. Alias eligendi assumenda atque ullam id non dicta, deserunt molestias placeat provident est quia animi quisquam tenetur nostrum natus veritatis esse quos fuga dignissimos incidunt aspernatur reiciendis doloremque. Nemo totam fugiat debitis nihil optio nobis, 
-                explicabo blanditiis quo incidunt vel labore dolores ullam pariatur hic deleniti dolorum ducimus maxime nostrum laborum vero! Quod quas molestiae suscipit recusandae animi nobis voluptas quo fugit labore mollitia cum tempora iusto, saepe natus id enim doloremque nostrum iste fugiat ipsam 
-                sapiente. Ad ex deserunt vel, obcaecati soluta nulla, eum inventore delectus porro et iusto eos autem neque qui, necessitatibus sint rem incidunt accusamus veniam possimus eaque libero? Perferendis dolorem temporibus, delectus rem ullam commodi explicabo reiciendis voluptates labore ut consequatur quisquam illum, pariatur odit quo tempora fuga vero. Vitae assumenda consectetur molestiae expedita corrupti, magnam quasi officia facere aspernatur incidunt est? Cum et suscipit explicabo inventore, eaque dolorem nihil iure laboriosam, architecto fugit distinctio. Fugiat provident hic rem modi, ducimus quaerat expedita libero dolor a eligendi, necessitatibus sequi.
-            </p>
+        </p>
             <div class="redirections">
-                <a href="{{route('home')}}">
+                <a href="{{route('principal')}}">
                     <button class="button_position">
-                        Volver
+                        Ir al menu principal
                     </button>
                 </a>
                 <a href="{{route('prendas.index')}}">

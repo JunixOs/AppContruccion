@@ -44,7 +44,7 @@
 										<th>Descripcion</th>
 										<th>Precio</th>
 										<th>Tiempo de Uso</th>
-										<th>User Id</th>
+										<th>Usuario</th>
 
                                         <th></th>
                                     </tr>
@@ -56,7 +56,8 @@
                                             
                                             <td>
                                                 @if ($prenda->image)
-                                                <img src="{{ asset($prenda->image) }}" alt="{{$prenda->id}}" width="200px" height="250px">
+                                                <!--<img src="{ { asset($prenda->image) }}" alt="{ {$prenda->id}}" width="200px" height="250px">-->
+                                                <img src="{{ url('image/'. $prenda->id) }}" alt="{{$prenda->id}}" width="200px" height="250px">
                                                 @endif
                                             </td>
 											<td>{{ $prenda->descripcion }}</td>
@@ -67,19 +68,19 @@
                                                 <td>{{ $prenda->precio }} soles</td>
                                             @endif
 											<td>{{ $prenda->tiempo_uso }} dias</td>
-											<td>{{ $prenda->user_id }}</td>
+											<td>{{ $prenda->user_name }}</td>
 
 
                                             <td>
-                                                <form action="{{ route('prendas.destroy',$prenda->id) }}" method="POST">
-                                                    <a class="btn btn-sm btn-primary " href="{{ route('prendas.show',$prenda->id) }}"><i class="fa fa-fw fa-eye"></i> {{ __('Show') }}</a>
+                                                <!--<form action="{ route('prendas.destroy',$prenda->id) }}" method="POST">-->
+                                                    <a class="btn btn-sm btn-primary " href="{{ route('prendas.show',$prenda->id) }}"><i class="fa fa-fw fa-eye"></i> {{ __('Ver') }}</a>
                                                     @if (Auth::id()==$prenda->user_id)
-                                                        <a class="btn btn-sm btn-success" href="{{ route('prendas.edit',$prenda->id) }}"><i class="fa fa-fw fa-edit"></i> {{ __('Edit') }}</a>
+                                                        <a class="btn btn-sm btn-success" href="{{ route('prendas.edit',$prenda->id) }}"><i class="fa fa-fw fa-edit"></i> {{ __('Editar') }}</a>
                                                         @csrf
-                                                        @method('DELETE')
-                                                        <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i> {{ __('Delete') }}</button>
+                                                        <!--@ method('DELETE')-->
+                                                        <a class="btn btn-danger btn-sm" href="{{ route('confirmacion',$prenda->id) }}"><i class="fa fa-fw fa-edit"></i> {{ __('Borrar') }}</a>
                                                     @endif
-                                                </form>
+                                                <!--</form>-->
                                             </td>
                                         </tr>
                                     @endforeach

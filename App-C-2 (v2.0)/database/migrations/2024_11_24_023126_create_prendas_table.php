@@ -15,10 +15,11 @@ return new class extends Migration
             $table->id();
             $table->timestamps();
             $table->string('descripcion');
-            $table->double('precio',3,2);
+            $table->double('precio',6,2);
             $table->int('tiempo_uso');
             $table->bigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->string('user_name');
         });
     }
 

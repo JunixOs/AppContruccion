@@ -37,7 +37,7 @@
                                     <tr>
                                         
                                         <th>ID de usuario</th>
-										<th>Name</th>
+										<th>Nombre de usuario</th>
 										<th>Email</th>
 										<th>Telefono</th>
 
@@ -55,11 +55,13 @@
                                                 <td>{{ $user->telefono }}</td>
                                             
                                             <td>
-                                                <form action="{{ route('users.destroy',$user->id) }}" method="POST">
-                                                    <a class="btn btn-sm btn-primary " href="{{ route('users.show',$user->id) }}"><i class="fa fa-fw fa-eye"></i> {{ __('Show') }}</a>
-                                                    <a class="btn btn-sm btn-success" href="{{ route('users.edit',$user->id) }}"><i class="fa fa-fw fa-edit"></i> {{ __('Edit') }}</a>
-                                                    @csrf
-                                                </form>
+                                                <!--<form action="{ route('users.destroy',$user->id) }}" method="POST">-->
+                                                    <a class="btn btn-sm btn-primary " href="{{ route('users.show',$user->id) }}"><i class="fa fa-fw fa-eye"></i> {{ __('Ver') }}</a>
+                                                    <a class="btn btn-sm btn-success" href="{{ route('users.edit',$user->id) }}"><i class="fa fa-fw fa-edit"></i> {{ __('Editar') }}</a>
+                                                    <!--@ csrf
+                                                    @ method('DELETE')-->
+                                                    <a class="btn btn-danger btn-sm" href="{{ route('borrar-usuario',$user->id) }}"><i class="fa fa-fw fa-edit"></i> {{ __('Borrar') }}</a>
+                                                <!--</form>-->
                                             </td>
                                             @endif
                                         </tr>

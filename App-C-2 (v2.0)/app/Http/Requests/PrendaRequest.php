@@ -25,12 +25,11 @@ class PrendaRequest extends FormRequest
     {
         return [
 			'descripcion' => 'required|string',
-			'precio' => 'nullable|numeric|regex:/^\d{1,3}(\.\d{1,2})?$/',
+			'precio' => 'nullable|numeric|regex:/^\d{1,4}(\.\d{1,2})?$/',
 			'tiempo_uso' => 'required',
 			'user_id' => 'required|exists:users,id',
-            'image' => 'required'
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg,bmp,webp,tiff|max:2048',
+            'user_name' => 'required|string'
         ];
     }
-
-
 }

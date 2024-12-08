@@ -14,14 +14,14 @@
                             <span class="card-title">{{ __('Show') }} Prenda </span>
                         </div>
                         <div class="float-right">
-                            <a class="btn btn-primary btn-sm" href="{{ route('prendas.index') }}"> {{ __('Back') }}</a>
+                            <a class="btn btn-primary btn-sm" href="{{ route('prendas.index') }}"> {{ __('Atras') }}</a>
                         </div>
                     </div>
 
                     <div class="card-body bg-white">
                             <div class="form-group mb-2 mb20">
                                 <strong>Imagen:</strong>
-                                    <img src="{{ asset($prenda->image) }}" alt="{{$prenda->id}}" width="400px" height="350px">
+                                    <img src="{{ url('image/'. $prenda->id) }}" alt="{{$prenda->id}}" width="400px" height="350px">
                             </div>
                             <div class="form-group mb-2 mb20">
                                 <strong>Descripcion:</strong>
@@ -42,6 +42,14 @@
                             <div class="form-group mb-2 mb20">
                                 <strong>User ID:</strong>
                                 {{ $prenda->user_id }}
+                            </div>
+                            <div class="form-group mb-2 mb20">
+                                <strong>User ID:</strong>
+                                @if ($prenda->user_name)
+                                    {{ $prenda->user_name }}
+                                @else
+                                    {{'No hay ningun valor establecido, porfavor edite la informacion de esta prenda'}}
+                                @endif
                             </div>
                     </div>
                 </div>

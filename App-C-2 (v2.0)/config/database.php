@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Str;
+use App\Exceptions\ExcepcionesApp;
 
 return [
 
@@ -32,7 +33,6 @@ return [
     | choice installed on your machine before you begin development.
     |
     */
-
     'connections' => [
 
         'sqlite' => [
@@ -147,5 +147,5 @@ return [
         ],
 
     ],
-
+            
 ];

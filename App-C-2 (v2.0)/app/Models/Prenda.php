@@ -31,7 +31,7 @@ class Prenda extends Model
      *
      * @var array
      */
-    protected $fillable = ['descripcion', 'precio', 'tiempo_uso', 'user_id', 'image'];
+    protected $fillable = ['descripcion', 'precio', 'tiempo_uso', 'user_id', 'image', 'imageurl'];
 
 
     /**

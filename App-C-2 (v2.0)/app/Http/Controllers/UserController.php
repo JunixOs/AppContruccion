@@ -4,7 +4,16 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Http\Requests\UserRequest;
+/*
+    User: yonel.ordonez@unas.edu.pe
+    Contra: user123
 
+    User: yonelsilva75@gmail.com
+    Contra: usuario1234
+
+    User: pepe@gmail.com
+    Contra: 12345678
+*/
 /**
  * Class UserController
  * @package App\Http\Controllers
@@ -30,7 +39,10 @@ class UserController extends Controller
         $user = new User();
         return view('user.create', compact('user'));
     }
-
+    public function confirmate($id)
+    {
+        return view('user.confirmationdelete', compact('id')); //Paso la variable a la vista, para poder usarlo ahi
+    }
     /**
      * Store a newly created resource in storage.
      */
@@ -77,7 +89,8 @@ class UserController extends Controller
     {
         User::find($id)->delete();
 
-        return redirect()->route('users.index')
-            ->with('success', 'User deleted successfully');
+        return redirect()->route('logout')
+            ->with('success', 'User deleted successfully')
+            ->header('login',route('/'));
     }
 }

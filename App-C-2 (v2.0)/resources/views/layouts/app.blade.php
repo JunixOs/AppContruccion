@@ -18,15 +18,15 @@
 </head>
 <style>
             body {
-            background-image: image-set("{{asset('images/IMG-1.jpeg')}}"); /*Uso asset para ingresar a la carpeta public que me proporicona Laravel*/ 
+            background-image: image-set("{{asset('/images/1287136.webp')}}"); /*Uso asset para ingresar a la carpeta public que me proporicona Laravel*/ 
             color: #FFFFFF;
             border-radius: 10px;
             background-repeat: no-repeat;
             background-attachment: fixed;
             background-size: cover;
-            animation: SwitchImage 150s infinite;
+            /*animation: SwitchImage 150s infinite;*/
         }
-        @keyframes SwitchImage {
+        /*@keyframes SwitchImage {
         0% {
             background-image: image-set("{{asset('/images/IMG-1.jpeg')}}");
             background-size: cover;
@@ -42,12 +42,13 @@
             background-size: cover;
         }
         }
+        */
 </style>
 <body>
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
-                <a class="navbar-brand" href="{{ route('home') }}">
+                <a class="navbar-brand" href="{{ route('principal') }}">
                     {{ config('app.name', 'ClothSha') }}
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
@@ -64,7 +65,7 @@
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ms-auto">
                         <li>
-                            <a class="nav-link" href="{{ route('users.index') }}">{{ __('Ver usuario') }}</a>
+                            
                         </li>
                         <!-- Authentication Links -->
                         @guest
@@ -89,12 +90,14 @@
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
+                                        {{ __('Cerrar sesion') }}
                                     </a>
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                         @csrf
                                     </form>
+
+                                    <a class="dropdown-item" href="{{ route('users.index') }}">{{ __('Ver datos') }}</a>
                                 </div>
                             </li>
                         @endguest
