@@ -101,7 +101,7 @@
                                     @if ( Auth::user()->imagen_perfil==null)
                                     <img src="{{asset('/images/default_profile_photo.webp')}}" alt="" width="45px" height="45px" class="circle">
                                     @else
-                                    <img src="{{ url('image-user/',Auth::id())}}" alt="{{Auth::id()}}" width="45px" height="45px" class="circle">
+                                    <img src="{{ url('image-user/'.Auth::id())}}" alt="{{Auth::id()}}" width="45px" height="45px" class="circle">
                                     @endif
                                      {{ Auth::user()->name }}
                                 </a>

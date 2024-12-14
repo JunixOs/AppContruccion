@@ -5,6 +5,13 @@
 @endsection
 
 @section('content')
+<style>
+    .encabezado-tabla{
+        position: sticky;
+        top: 0;
+        z-index: 1; 
+    }
+</style>
     <div class="container-fluid">
         <div class="row">
             <div class="col-sm-12">
@@ -81,7 +88,7 @@
 											<td>{{ $juguete->user_name }}</td>
 
                                             <td>
-                                                <form action="{{ route('juguetes.destroy',$juguete->id) }}" method="POST">
+                                                <!--<form action="{ { route('juguetes.destroy',$juguete->id) }}" method="POST">-->
                                                     <a class="btn btn-sm btn-primary " href="{{ route('juguetes.show',$juguete->id) }}"><i class="fa fa-fw fa-eye"></i> {{ __('Ver') }}</a>
                                                     @if (Auth::id()==$juguete->id)
                                                     <a class="btn btn-sm btn-success" href="{{ route('juguetes.edit',$juguete->id) }}"><i class="fa fa-fw fa-edit"></i> {{ __('Editar') }}</a>
@@ -89,7 +96,7 @@
                                                     @method('DELETE')
                                                     <a class="btn btn-danger btn-sm" href="{{ route('confirmacion-juguetes',$juguete->id) }}"><i class="fa fa-fw fa-edit"></i> {{ __('Borrar') }}</a>
                                                     @endif
-                                                </form>
+                                                <!--</form>-->
                                             </td>
                                         </tr>
                                     @endforeach

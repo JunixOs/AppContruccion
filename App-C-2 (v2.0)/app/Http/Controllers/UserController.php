@@ -33,7 +33,7 @@ class UserController extends Controller
             abort(404);
         }
     
-        $imagedata = $imagen_perfil->image;
+        $imagedata = $imagen_perfil->imagen_perfil;
     
         $tipoMIME = new \finfo(FILEINFO_MIME_TYPE);
         $mimetype = $tipoMIME->buffer($imagedata);
@@ -100,9 +100,9 @@ class UserController extends Controller
         if($request->validated())
         {
             
-            if ($request->hasFile('image'));
+            if ($request->hasFile('imagen_perfil'));
             {  
-                $image = $request->file('image');
+                $image = $request->file('imagen_perfil');
 
                 $imagedata= file_get_contents($image->getRealPath());
                 $user->imagen_perfil = $imagedata; //tipo blob
@@ -111,8 +111,7 @@ class UserController extends Controller
             $user->name = $request->name;
             $user->telefono = $request->telefono;
             $user->extension_telefonica = $request->extension_telefonica;
-            $user->user_id = $request->user_id;
-            $user->user_name = $request->user_name;
+            $user->email=$request->email;
             $actual=now()->timestamp;
             $user->updated_at = $actual;
             $user->save();

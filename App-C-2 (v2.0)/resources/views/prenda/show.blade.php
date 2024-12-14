@@ -72,6 +72,20 @@
                                     {{'No hay ningun valor establecido, porfavor edite la informacion de esta prenda'}}
                                 @endif
                             </div>
+                            <dd>
+                                <div class="form-group mb-2 mb20">
+                                    <strong>Correo electronico del usuario:</strong>
+                                    {{ $user->email }}
+                                </div>
+                                <div class="form-group mb-2 mb20">
+                                    <strong>Numero de telefono del usuario:</strong>
+                                    @php
+                                    $extension=$user->extension_telefonica;
+                                    $extension=substr($extension,strlen($extension)-3);
+                                    @endphp
+                                    {{ $extension.' '.$user->telefono }}
+                                </div>
+                            </dd>
                     </div>
                 </div>
             </div>

@@ -59,7 +59,7 @@
                                                     <td><img src="{{asset('/images/default_profile_photo.webp')}}" alt="default" width="200px" height="250px" class="circulo"></td>
                                                 @else
                                                     <td>
-                                                        <img src="{{ url('image-user/',$user->id)}}" alt="{{$user->id}}" width="200px" height="250px" class="circulo">
+                                                        <img src="{{ url('image-user/'.$user->id)}}" alt="{{$user->id}}" width="200px" height="250px" class="circulo">
                                                     </td>
                                                 @endif
                                                 

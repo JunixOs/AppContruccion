@@ -122,13 +122,18 @@ class PrendaController extends Controller
      */
     public function show($id)
     {
+        $data=Prenda::find($id);
+        $user_id = $data->user_id;
+
+
         $prenda = Prenda::find($id);
+        $user = User::find($user_id); //Busco en la base de datos
         /*
         $imagedata = $prenda->image;
         $imageurl = PrendaController::image($imagedata);
         */
 
-        return view('prenda.show', compact('prenda'));
+        return view('prenda.show', compact('prenda','user')); //Paso las variables a la vista
     }
 
     /**

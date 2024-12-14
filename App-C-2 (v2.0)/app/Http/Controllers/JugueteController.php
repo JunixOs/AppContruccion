@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Juguete;
 use App\Http\Requests\JugueteRequest;
+use App\Models\User;
 
 /**
  * Class JugueteController
@@ -93,9 +94,14 @@ class JugueteController extends Controller
      */
     public function show($id)
     {
+        $data = Juguete::find($id);
+
+        $user_id = $data->user_id;
+        $user= User::find($user_id);
+
         $juguete = Juguete::find($id);
 
-        return view('juguete.show', compact('juguete'));
+        return view('juguete.show', compact('juguete','user'));
     }
 
     /**

@@ -94,7 +94,6 @@
                                             @endif
 											<td>{{ $prenda->user_name }}</td>
 
-
                                             <td>
                                                 <!--<form action="{ route('prendas.destroy',$prenda->id) }}" method="POST">-->
                                                     <a class="btn btn-sm btn-primary " href="{{ route('prendas.show',$prenda->id) }}"><i class="fa fa-fw fa-eye"></i> {{ __('Ver') }}</a>
