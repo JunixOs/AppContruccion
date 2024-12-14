@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Http\Requests\UserRequest;
+use App\Models\Prenda;
+use Carbon\Carbon;
 /*
     User: yonel.ordonez@unas.edu.pe
     Contra: user123
@@ -23,6 +25,22 @@ class UserController extends Controller
     /**
      * Display a listing of the resource.
      */
+    public function image($id)
+    {
+        $imagen_perfil = User::find($id);
+
+        if (!$imagen_perfil) {
+            abort(404);
+        }
+    
+        $imagedata = $imagen_perfil->image;
+    
+        $tipoMIME = new \finfo(FILEINFO_MIME_TYPE);
+        $mimetype = $tipoMIME->buffer($imagedata);
+    
+        return response($imagedata, 200)->header('Content-Type', $mimetype);
+    }
+
     public function index()
     {
         $users = User::paginate();
@@ -79,18 +97,39 @@ class UserController extends Controller
      */
     public function update(UserRequest $request, User $user)
     {
-        $user->update($request->validated());
+        if($request->validated())
+        {
+            
+            if ($request->hasFile('image'));
+            {  
+                $image = $request->file('image');
 
-        return redirect()->route('users.index')
-            ->with('success', 'User updated successfully');
+                $imagedata= file_get_contents($image->getRealPath());
+                $user->imagen_perfil = $imagedata; //tipo blob
+
+            }
+            $user->name = $request->name;
+            $user->telefono = $request->telefono;
+            $user->extension_telefonica = $request->extension_telefonica;
+            $user->user_id = $request->user_id;
+            $user->user_name = $request->user_name;
+            $actual=now()->timestamp;
+            $user->updated_at = $actual;
+            $user->save();
+
+            return redirect()->route('users.index')
+                ->with('success', 'Datos actualizados con exito!');
+        }
+
     }
 
     public function destroy($id)
     {
         User::find($id)->delete();
+        Prenda::find($id)->delete();
 
         return redirect()->route('logout')
-            ->with('success', 'User deleted successfully')
+            ->with('success', 'Usuario eliminado con exito!')
             ->header('login',route('/'));
     }
 }

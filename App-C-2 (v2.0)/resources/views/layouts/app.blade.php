@@ -43,6 +43,11 @@
         }
         }
         */
+        .circle{
+            background-size: cover;
+            border-radius: 50%;
+            margin: 0 auto;
+        }
 </style>
 <body>
     <div id="app">
@@ -58,10 +63,20 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav me-auto">
-                        <a class="nav-link" href="{{ route('prendas.index') }}">{{ __('Ver prendas') }}</a>
-                        <a class="nav-link" href="{{ route('aboutus') }}">{{ __('Sobre nosotros') }}</a>
+                        <li class="nav-item dropdown">
+                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                {{ __('Secciones') }}
+                            </a>
+                            
+                            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="{{ route('prendas.index') }}">{{ __('Ver prendas') }}</a>
+                                <a class="dropdown-item" href="{{ route('juguetes.index') }}">{{ __('Ver Juguetes')}}</a>
+                            </div>
+                        </li>
+                        
+                            <a class="nav-link" href="{{ route('aboutus') }}">{{ __('Sobre nosotros') }}</a>
                     </ul>
-
+                    
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ms-auto">
                         <li>
@@ -83,7 +98,12 @@
                         @else
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }}
+                                    @if ( Auth::user()->imagen_perfil==null)
+                                    <img src="{{asset('/images/default_profile_photo.webp')}}" alt="" width="45px" height="45px" class="circle">
+                                    @else
+                                    <img src="{{ url('image-user/',Auth::id())}}" alt="{{Auth::id()}}" width="45px" height="45px" class="circle">
+                                    @endif
+                                     {{ Auth::user()->name }}
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">

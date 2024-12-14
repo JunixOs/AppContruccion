@@ -1,21 +1,10 @@
 @extends('layouts.app')
 
 @section('template_title')
-    Prenda
+    juguete
 @endsection
 
 @section('content')
-<style>
-    .circulo{
-        background-size: cover;
-        border-radius: 50%;
-        margin: 0 auto;
-    }
-    .centrar{
-        display: grid;
-        align-content: center;
-    }
-</style>
     <div class="container-fluid">
         <div class="row">
             <div class="col-sm-12">
@@ -24,15 +13,15 @@
                         <div style="display: flex; justify-content: space-between; align-items: center;">
 
                             <span id="card_title">
-                                {{ __('Mis Prendas') }}
+                                {{ __('Mis Juguetes') }}
                             </span>
                             <div class="float-right">
-                                <a href="{{ route('prendas.index') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
-                                  {{ __('Ver todas las prendas') }}
+                                <a href="{{ route('juguetes.index') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
+                                  {{ __('Ver todos los juguetes') }}
                                 </a>
                               </div>
                              <div class="float-right">
-                                <a href="{{ route('prendas.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
+                                <a href="{{ route('juguetes.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
                                   {{ __('Crear nuevo') }}
                                 </a>
                               </div>
@@ -53,7 +42,6 @@
                                         <th>Imagen</th>                                        
 										<th>Descripcion</th>
 										<th>Precio</th>
-                                        <th>Talla</th>
 										<th>Tiempo de Uso</th>
 										<th>Usuario</th>
 
@@ -62,47 +50,45 @@
                                 </thead>
 
                                 <tbody>
-                                    @foreach ($prendas as $prenda)
-                                        @if (Auth::id()==$prenda->user_id)
+                                    @foreach ($juguetes as $juguete)
+                                        @if (Auth::id()==$juguete->user_id)
                                         
                                         <tr>
                                             <td>{{ ++$i }}</td>
                                             
                                             <td>
-                                                <div class="centrar">
-                                                    @if ($prenda->image)
-                                                    <img src="{{ url('image-prenda/'. $prenda->id) }}" alt="{{$prenda->id}}" width="200px" height="250px" class="circulo">
-                                                    @endif
-                                                </div>
+                                                @if ($juguete->image)
+                                                <img src="{{ url('image-juguete/'. $juguete->id) }}" alt="{{$juguete->id}}" width="200px" height="250px">
+                                                @endif
                                             </td>
-											<td>{{ $prenda->descripcion }}</td>
-                                            @if ($prenda->precio==null or $prenda->precio==0)
+											<td>{{ $juguete->descripcion }}</td>
+                                            @if ($juguete->precio==null or $juguete->precio==0)
                                                 <td>Gratis</td>
 
                                             @else 
-                                                <td>{{ $prenda->precio }} soles</td>
+                                                <td>{{ $juguete->precio }} soles</td>
 
                                             @endif
-                                            <td>{{ $prenda->talla }}</td>
-                                            @if ($prenda->tiempo_uso>365)
-											<td>{{ round(($prenda->tiempo_uso)/365,2) }} años</td>
-                                            @elseif ($prenda->tiempo_uso>30)
-                                            <td>{{ round(($prenda->tiempo_uso)/30,2) }} meses</td>
-                                            @elseif ($prenda->tiempo_uso>7)
-                                            <td>{{ round(($prenda->tiempo_uso)/7,2) }} semanas</td>
+                                            
+                                            @if ($juguete->tiempo_uso>365)
+											<td>{{ round(($juguete->tiempo_uso)/365,2) }} años</td>
+                                            @elseif ($juguete->tiempo_uso>30)
+                                            <td>{{ round(($juguete->tiempo_uso)/30,2) }} meses</td>
+                                            @elseif ($juguete->tiempo_uso>7)
+                                            <td>{{ round(($juguete->tiempo_uso)/7,2) }} semanas</td>
                                             @else
-                                            <td>{{ $prenda->tiempo_uso }} dias</td>
+                                            <td>{{ $juguete->tiempo_uso }} dias</td>
                                             @endif
-											<td>{{ $prenda->user_name }}</td>
+											<td>{{ $juguete->user_name }}</td>
     
 
                                             <td>
-                                                <!--<form action="{ route('prendas.destroy',$prenda->id) }}" method="POST">-->
-                                                    <a class="btn btn-sm btn-primary " href="{{ route('prendas.show',$prenda->id) }}"><i class="fa fa-fw fa-eye"></i> {{ __('Ver') }}</a>
-                                                    <a class="btn btn-sm btn-success" href="{{ route('prendas.edit',$prenda->id) }}"><i class="fa fa-fw fa-edit"></i> {{ __('Editar') }}</a>
+                                                <!--<form action="{ route('juguetes.destroy',$juguete->id) }}" method="POST">-->
+                                                    <a class="btn btn-sm btn-primary " href="{{ route('juguetes.show',$juguete->id) }}"><i class="fa fa-fw fa-eye"></i> {{ __('Ver') }}</a>
+                                                    <a class="btn btn-sm btn-success" href="{{ route('juguetes.edit',$juguete->id) }}"><i class="fa fa-fw fa-edit"></i> {{ __('Editar') }}</a>
                                                     @csrf
                                                     @method('DELETE')
-                                                    <a class="btn btn-danger btn-sm" href="{{ route('confirmacion',$prenda->id) }}"><i class="fa fa-fw fa-edit"></i> {{ __('Borrar') }}</a>
+                                                    <a class="btn btn-danger btn-sm" href="{{ route('confirmacion',$juguete->id) }}"><i class="fa fa-fw fa-edit"></i> {{ __('Borrar') }}</a>
                                                     <!--<button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i> { __('Borrar') }}</button>-->
                                                 </form>
                                             </td>
@@ -114,7 +100,7 @@
                         </div>
                     </div>
                 </div>
-                {!! $prendas->links() !!}
+                {!! $juguetes->links() !!}
             </div>
         </div>
     </div>

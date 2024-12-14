@@ -46,14 +46,14 @@ class Handler extends ExceptionHandler
             //
         });
     }
-
+/*
     public function render($request, Throwable $e) //viene por defecto en laravel
     {
         if ($e instanceof QueryException) {
 
             // Opcionalmente, puedes retornar una vista personalizada para el error de base de datos
-            return response()->view('viewerrores.errorlogeo', [], 500);
+            return response()->view('viewerrores.errorconexionDB', [], 500);
     }
     return parent::render($request, $e);
-    }
+    }*/
 }

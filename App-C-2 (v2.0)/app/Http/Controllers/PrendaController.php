@@ -113,7 +113,7 @@ class PrendaController extends Controller
             $prenda->save();
             //Prenda::create($request->validated());
             return redirect()->route('prendas.index')
-                ->with('success', 'Prenda created successfully.');
+                ->with('success', 'Prenda creada exitosamente');
         }
     }
 
@@ -182,7 +182,7 @@ class PrendaController extends Controller
             //$prenda->update($request->validated());
 
             return redirect()->route('prendas.index')
-                ->with('success', 'Prenda updated successfully');
+                ->with('success', 'Prenda actualizada exitosamente');
         }
     }
 
@@ -194,6 +194,6 @@ class PrendaController extends Controller
         */
         Prenda::find($id)->delete();
         return redirect()->route('prendas.index')
-            ->with('success', 'Prenda deleted successfully');
+            ->with('success', 'Prenda eliminada exitosamente');
     }
 }

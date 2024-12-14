@@ -29,7 +29,8 @@ class PrendaRequest extends FormRequest
 			'tiempo_uso' => 'required',
 			'user_id' => 'required|exists:users,id',
             'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg,bmp,webp,tiff|max:2048',
-            'user_name' => 'required|string'
+            'user_name' => 'required|string',
+            'talla' => 'required|numeric|between:0,50'
         ];
     }
 }

@@ -5,6 +5,17 @@
 @endsection
 
 @section('content')
+<style>
+    .circulo{
+        background-size: cover;
+        border-radius: 50%;
+        margin: 0 auto;
+    }
+    .centrar{
+        display: grid;
+        align-content: center;
+    }
+</style>
     <div class="container-fluid">
         <div class="row">
             <div class="col-sm-12">
@@ -40,9 +51,10 @@
                                 <thead class="thead">
                                     <tr>
                                         <th>No</th>
-                                        <th>Imagen</th>                                        
+                                        <th>Imagen</th>                                    
 										<th>Descripcion</th>
 										<th>Precio</th>
+                                        <th>Talla</th>
 										<th>Tiempo de Uso</th>
 										<th>Usuario</th>
 
@@ -57,7 +69,9 @@
                                             <td>
                                                 @if ($prenda->image)
                                                 <!--<img src="{ { asset($prenda->image) }}" alt="{ {$prenda->id}}" width="200px" height="250px">-->
-                                                <img src="{{ url('image/'. $prenda->id) }}" alt="{{$prenda->id}}" width="200px" height="250px">
+                                                <div class="centrar">
+                                                    <img src="{{ url('image-prenda/'. $prenda->id) }}" alt="{{$prenda->id}}" width="200px" height="200px" class="circulo">
+                                                </div>
                                                 @endif
                                             </td>
 											<td>{{ $prenda->descripcion }}</td>
@@ -67,7 +81,17 @@
                                             @else 
                                                 <td>{{ $prenda->precio }} soles</td>
                                             @endif
-											<td>{{ $prenda->tiempo_uso }} dias</td>
+                                            <td>{{ $prenda->talla }}</td>
+                                            
+                                            @if ($prenda->tiempo_uso>365)
+											<td>{{ round(($prenda->tiempo_uso)/365,2) }} años</td>
+                                            @elseif ($prenda->tiempo_uso>30)
+                                            <td>{{ round(($prenda->tiempo_uso)/30,2) }} meses</td>
+                                            @elseif ($prenda->tiempo_uso>7)
+                                            <td>{{ round(($prenda->tiempo_uso)/7,2) }} semanas</td>
+                                            @else
+                                            <td>{{ $prenda->tiempo_uso }} dias</td>
+                                            @endif
 											<td>{{ $prenda->user_name }}</td>
 
 

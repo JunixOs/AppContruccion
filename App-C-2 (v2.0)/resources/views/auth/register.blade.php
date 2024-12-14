@@ -57,11 +57,12 @@
                             <label for="telefono" class="col-md-4 col-form-label text-md-end">{{ __('Numero de telefono') }}</label>
 
                             <div class="col-md-6 alinear">
-                                <select name="telefono_ex" id="telefono" required class="form-control" style="width: 90px">
-                                    <option value="Peru" selected>+51</option>
-                                    <option value="Mexico">+52</option>
-                                    <option value="Argentina">+54</option>
-                                    <option value="Chile">+56</option>
+                                <select name="extension_telefonica" id="extension_telefonica" required class="form-control" style="width: 90px">
+                                    <option value="Peru +51" selected>+51</option>
+                                    <option value="Mexico +52">+52</option>
+                                    <option value="Cuba +53">+53</option>
+                                    <option value="Argentina +54">+54</option>
+                                    <option value="Chile +56">+56</option>
                                 </select>
                                 <input id="telefono" type="tel" class="form-control @error('telefono') is-invalid @enderror" name="telefono" required autocomplete="phone">
                                 @error('telefono')
@@ -96,6 +97,7 @@
 
                         <div class="row mb-0">
                             <div class="col-md-6 offset-md-4">
+                                <a href="{{ route('login') }}" class="btn btn-primary">Cancelar</a>
                                 <button type="submit" class="btn btn-primary">
                                     {{ __('Registrarse') }}
                                 </button>

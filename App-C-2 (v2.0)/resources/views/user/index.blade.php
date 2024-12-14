@@ -5,6 +5,13 @@
 @endsection
 
 @section('content')
+<style>
+    .circulo{
+        background-size: cover;
+        border-radius: 50%;
+        margin: 0 auto;
+    }
+</style>
     <div class="container-fluid">
         <div class="row">
             <div class="col-sm-12">
@@ -35,7 +42,7 @@
                             <table class="table table-striped table-hover">
                                 <thead class="thead">
                                     <tr>
-                                        
+                                        <th>Imagen de perfil</th>
                                         <th>ID de usuario</th>
 										<th>Nombre de usuario</th>
 										<th>Email</th>
@@ -47,8 +54,15 @@
                                 <tbody>
                                     @foreach ($users as $user)
                                         <tr>
-                                            @if ($user->id==Auth::id()) 
-
+                                            @if ($user->id==Auth::id())
+                                                @if ($user->imagen_perfil==null)
+                                                    <td><img src="{{asset('/images/default_profile_photo.webp')}}" alt="default" width="200px" height="250px" class="circulo"></td>
+                                                @else
+                                                    <td>
+                                                        <img src="{{ url('image-user/',$user->id)}}" alt="{{$user->id}}" width="200px" height="250px" class="circulo">
+                                                    </td>
+                                                @endif
+                                                
                                                 <td>{{ $user->id }}</td>
                                                 <td>{{ $user->name }}</td>
                                                 <td>{{ $user->email }}</td>

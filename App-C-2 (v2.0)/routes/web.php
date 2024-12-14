@@ -20,14 +20,19 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/prendas/misprendas',[App\Http\Controllers\PrendaController::class, 'redirect'])->middleware('auth')->name('redirect');
-Route::get('/eliminar/{id}',[App\Http\Controllers\PrendaController::class, 'confirmation'])->name('confirmacion'); //Paso el id a la funcion de este modo
+Route::get('/juguetes/misjuguetes',[App\Http\Controllers\JugueteController::class, 'redireccionar'])->middleware('auth')->name('redirect-misjuguetes');
+Route::get('/eliminar-prenda/{id}',[App\Http\Controllers\PrendaController::class, 'confirmation'])->name('confirmacion'); //Paso el id a la funcion de este modo
+Route::get('/eliminar-juguete/{id}',[App\Http\Controllers\JugueteController::class, 'confirmation'])->name('confirmacion-juguetes');
 Route::resource('prendas', App\Http\Controllers\PrendaController::class)->middleware('auth');
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::view('/principal','home')->middleware('auth')->name('principal');
 Route::view('/sobre_nosotros', 'aboutus')->name('aboutus');
+Route::resource('juguetes', App\Http\Controllers\JugueteController::class)->middleware('auth'); //Me permite acceder a los metodos de la funcion controladora
 
 Route::get('/eliminar-usuario/{id}',[App\Http\Controllers\UserController::class, 'confirmate'])->name('borrar-usuario');
 Route::resource('users', App\Http\Controllers\UserController::class)->middleware('auth'); //
 
-Route::get('image/{id}', [App\Http\Controllers\PrendaController::class, 'image']); //ruta hacia la imagen, es unico debido al ID, esto activa la funcion 'image'
+Route::get('image-juguete/{id}',[App\Http\Controllers\JugueteController::class, 'image']);
+Route::get('image-prenda/{id}', [App\Http\Controllers\PrendaController::class, 'image']); //ruta hacia la imagen, es unico debido al ID, esto activa la funcion 'image'
+Route::get('image-user/{id}',[App\Http\Controllers\UserController::class, 'image']);
 

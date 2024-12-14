@@ -57,7 +57,7 @@
         
                         <div class="card-body texto_error">
         
-                            {{ __('SERVERERROR!') }}
+                            {{ __('HA OCURRIDO UN ERRROR') }}
                             {{ __('No se ha podido establecer una conexion con el servidor') }}
                             <a class="btn btn-sm btn-primary" href="{{ route('login') }}"><i class="fa fa-fw fa-edit"></i> {{ __('Volver') }}</a>
                         </div>
