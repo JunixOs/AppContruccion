@@ -69,12 +69,21 @@
                             </a>
                             
                             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="{{ route('prendas.index') }}">{{ __('Ver prendas') }}</a>
+                                <a class="dropdown-item" href="{{ route('prendas.index') }}">{{ __('Ver Prendas') }}</a>
                                 <a class="dropdown-item" href="{{ route('juguetes.index') }}">{{ __('Ver Juguetes')}}</a>
                             </div>
                         </li>
-                        
-                            <a class="nav-link" href="{{ route('aboutus') }}">{{ __('Sobre nosotros') }}</a>
+                        <li class="nav-item dropdown">
+                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                {{ __('Sobre el proyecto') }}
+                            </a>
+                            
+                            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="{{ route('ODS') }}">{{ __('¿Que son los ODS?') }}</a>
+                                <a class="dropdown-item" href="{{ route('objetivo-proyecto') }}">{{ __('¿Cual es el objetivo de ClothSha?')}}</a>
+                            </div>
+                        </li>
+                        <!--<a class="nav-link" href="{ { route('aboutus') }}">{ { __('Sobre nosotros') }}</a>-->
                     </ul>
                     
                     <!-- Right Side Of Navbar -->

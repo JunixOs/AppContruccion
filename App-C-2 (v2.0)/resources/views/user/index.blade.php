@@ -74,7 +74,7 @@
                                                     <a class="btn btn-sm btn-success" href="{{ route('users.edit',$user->id) }}"><i class="fa fa-fw fa-edit"></i> {{ __('Editar') }}</a>
                                                     <!--@ csrf
                                                     @ method('DELETE')-->
-                                                    <a class="btn btn-danger btn-sm" href="{{ route('borrar-usuario',$user->id) }}"><i class="fa fa-fw fa-edit"></i> {{ __('Borrar') }}</a>
+                                                    <a class="btn btn-danger btn-sm" href="{{ route('borrar-usuario',$user->id) }}"><i class="fa fa-fw fa-edit"></i> {{ __('Borrar Cuenta') }}</a>
                                                 <!--</form>-->
                                             </td>
                                             @endif

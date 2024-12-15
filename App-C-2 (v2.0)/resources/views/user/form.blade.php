@@ -12,6 +12,13 @@
     <div class="col-md-12">
         
         <div class="form-group mb-2 mb20">
+            <label for="id" class="form-label">{{ __('ID de usuario') }}</label>
+            <input type="text" name="id" class="form-control @error('id') is-invalid @enderror" value="{{ old('id', Auth::id()) }}" id="id" placeholder="{{Auth::id()}}" style="pointer-events:none; cursor:no-drop">
+            <p class="form-label">ID de usuario actual: {{Auth::id()}}</p>
+            {!! $errors->first('id', '<div class="invalid-feedback" role="alert"><strong>:message</strong></div>') !!}
+        </div>
+        
+        <div class="form-group mb-2 mb20">
             <label for="name" class="form-label">{{ __('Nombre de usuario') }}</label>
             <input type="text" name="name" class="form-control @error('name') is-invalid @enderror" value="{{ old('name', $user?->name) }}" id="name" placeholder="Name">
             {!! $errors->first('name', '<div class="invalid-feedback" role="alert"><strong>:message</strong></div>') !!}

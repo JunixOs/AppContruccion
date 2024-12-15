@@ -54,7 +54,7 @@ class RegisterController extends Controller
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
             'telefono' => ['required', 'integer', 'min:9'],
-            'extension_telefonica' => ['required','string'],
+            'extension_telefonica' => ['required','string', 'max:255'],
             'imagen_perfil' => ['nullable','image','mimes:jpeg,png,jpg,gif,svg,bmp,webp,tiff','max:2048']
         ]);
     }
@@ -74,7 +74,6 @@ class RegisterController extends Controller
             //'password' => $data['password'],
             'telefono' => $data['telefono'],
             'extension_telefonica' => $data['extension_telefonica'],
-            'imagen_perfil' => $data['imagen_perfil'],
         ]);
     }
 }

@@ -15,6 +15,16 @@
         display: grid;
         align-content: center;
     }
+
+    .encabezado-tabla{
+        position: sticky;
+        top: 0;
+        z-index: 1;
+    }
+    .tabla {
+        width: 100%;
+        border-collapse: collapse;
+    }
 </style>
     <div class="container-fluid">
         <div class="row">
@@ -46,19 +56,19 @@
                     @endif
 
                     <div class="card-body bg-white">
-                        <div class="table-responsive">
-                            <table class="table table-striped table-hover">
-                                <thead class="thead">
+                        <div class="table-responsive" style="max-height: 73vh; overflow-y: scroll;">
+                            <table class="table table-striped table-hover tabla">
+                                <thead class="thead encabezado-tabla">
                                     <tr>
-                                        <th>No</th>
-                                        <th>Imagen</th>                                    
-										<th>Descripcion</th>
-										<th>Precio</th>
-                                        <th>Talla</th>
-										<th>Tiempo de Uso</th>
-										<th>Usuario</th>
+                                        <th class="encabezado-tabla">No</th>
+                                        <th class="encabezado-tabla">Imagen</th>                                    
+										<th class="encabezado-tabla">Descripcion</th>
+										<th class="encabezado-tabla">Precio</th>
+                                        <th class="encabezado-tabla">Talla</th>
+										<th class="encabezado-tabla">Tiempo de Uso</th>
+										<th class="encabezado-tabla">Usuario</th>
 
-                                        <th></th>
+                                        <th class="encabezado-tabla"></th>
                                     </tr>
                                 </thead>
                                 <tbody>

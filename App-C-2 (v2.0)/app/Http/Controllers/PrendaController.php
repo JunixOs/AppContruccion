@@ -110,6 +110,7 @@ class PrendaController extends Controller
             $prenda->precio = $request->precio;
             $prenda->tiempo_uso = $request->tiempo_uso;
             $prenda->user_name = $request->user_name;
+            $prenda->talla = $request->talla;
             $prenda->save();
             //Prenda::create($request->validated());
             return redirect()->route('prendas.index')
@@ -183,6 +184,7 @@ class PrendaController extends Controller
             $prenda->tiempo_uso = $request->tiempo_uso;
             $prenda->user_id = $request->user_id;
             $prenda->user_name = $request->user_name;
+            $prenda->talla = $request->talla;
             $prenda->save();
             //$prenda->update($request->validated());
 

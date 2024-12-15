@@ -5,6 +5,16 @@
 @endsection
 
 @section('content')
+    <style>
+        .centrar{
+            display: grid;
+            align-content: center;
+        }
+        .imagen{
+            background-size: cover;
+            margin: 0 auto;
+        }
+    </style>
     <section class="content container-fluid">
         <div class="row">
             <div class="col-md-12">
@@ -19,10 +29,10 @@
                     </div>
 
                     <div class="card-body bg-white">
-                        <div class="form-group mb-2 mb20">
+                        <div class="form-group mb-2 mb20 centrar">
                             @if ($juguete->image)
                                 <!--<img src="{ { asset($prenda->image) }}" alt="{ {$prenda->id}}" width="200px" height="250px">-->
-                                <img src="{{ url('image-juguete/'. $juguete->id) }}" alt="{{$juguete->id}}" width="400px" height="350px">
+                                <img src="{{ url('image-juguete/'. $juguete->id) }}" alt="{{$juguete->id}}" width="400px" height="350px" class="imagen">
                             @endif
                         </div>
                         <div class="form-group mb-2 mb20">
@@ -32,14 +42,14 @@
                         <div class="form-group mb-2 mb20">
                             <strong>Precio:</strong>
                             @if ($juguete->precio==null or $juguete->precio==0)
-                            Gratis
+                            {{ 'Gratis' }}
                             @else
                             {{ $juguete->precio }} soles
                             @endif
                             
                         </div>
                         <div class="form-group mb-2 mb20">
-                            <strong>Tiempo Uso:</strong>
+                            <strong>Tiempo de uso:</strong>
                             @if ($juguete->tiempo_uso>365)
                             {{ round(($juguete->tiempo_uso)/365,2) }} años
                             @elseif ($juguete->tiempo_uso>30)
@@ -51,7 +61,7 @@
                             @endif
                         </div>
                         <div class="form-group mb-2 mb20">
-                            <strong>User Id:</strong>
+                            <strong>ID de usuario:</strong>
                             {{ $juguete->user_id}}
                         </div>
                         <div class="form-group mb-2 mb20">

@@ -30,14 +30,14 @@
         <!--user ID-->
         <div class="form-group mb-2 mb20">
             <label for="user_id" class="form-label">{{ __('ID de usuario') }}</label>
-            <input type="text" name="user_id" class="form-control @error('user_id') is-invalid @enderror" value="{{ old('user_id', Auth::id()) }}" id="user_id" placeholder="{{Auth::id()}}" style="pointer-events:none; cursor:no-drop">
+            <input type="text" name="user_id" class="form-control @error('user_id') is-invalid @enderror" value="{{ old('user_id', Auth::id()) }}" id="user_id" placeholder="{{Auth::id()}}" style="pointer-events:none; cursor:no-drop" readonly>
             <p class="form-label">ID de usuario actual: {{Auth::id()}}</p>
             {!! $errors->first('user_id', '<div class="invalid-feedback" role="alert"><strong>:message</strong></div>') !!}
         </div>
         <!--Nombre de usuario-->
         <div class="form-group mb-2 mb20">
             <label for="user_name" class="form-label">{{ __('Nombre de usuario') }}</label>
-            <input type="text" name="user_name" class="form-control @error('user_name') is-invalid @enderror" value="{{ old('user_name', Auth::user()->name) }}" id="user_name" placeholder="{{Auth::user()->name}}" style="pointer-events:none; cursor:no-drop">
+            <input type="text" name="user_name" class="form-control @error('user_name') is-invalid @enderror" value="{{ old('user_name', Auth::user()->name) }}" id="user_name" placeholder="{{Auth::user()->name}}" style="pointer-events:none; cursor:no-drop" readonly>
             <p class="form-label">Nombre usuario actual: {{Auth::user()->name}}</p>
             {!! $errors->first('user_name', '<div class="invalid-feedback" role="alert"><strong>:message</strong></div>') !!}
         </div>

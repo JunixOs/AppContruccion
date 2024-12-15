@@ -50,12 +50,12 @@
 
                         <div class="form-group mb-2 mb20">
                             <strong>Fecha de creacion de la cuenta:</strong>
-                            {{ $user->created_at }}
+                            {{ $user->created_at.' UTC'}}
                         </div>
 
                         <div class="form-group mb-2 mb20">
                             <strong>Fecha de la ultima actualizacion de la cuenta:</strong>
-                            {{ $user->updated_at }}
+                            {{ $user->updated_at.' UTC' }}
                         </div>
                     </div>
                 </div>

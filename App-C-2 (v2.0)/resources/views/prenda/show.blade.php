@@ -39,7 +39,7 @@
                             <div class="form-group mb-2 mb20">
                                 <strong>Precio:</strong>
                                 @if ($prenda->precio==null or $prenda->precio==0)
-                                    <p>Gratis</p>
+                                    {{ 'Gratis'}}
                                 @else 
                                     {{ $prenda->precio }} soles
                                 @endif

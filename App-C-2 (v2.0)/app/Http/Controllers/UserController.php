@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Http\Requests\UserRequest;
+use App\Models\Juguete;
 use App\Models\Prenda;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Auth;
 /*
     User: yonel.ordonez@unas.edu.pe
     Contra: user123
@@ -95,15 +97,15 @@ class UserController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UserRequest $request, User $user)
+    public function update(UserRequest $request, User $user, Prenda $prenda)
     {
         if($request->validated())
         {
             
-            if ($request->hasFile('imagen_perfil'));
+            if ($request->hasFile('imagen_perfil'))
             {  
                 $image = $request->file('imagen_perfil');
-
+                
                 $imagedata= file_get_contents($image->getRealPath());
                 $user->imagen_perfil = $imagedata; //tipo blob
 
@@ -114,8 +116,21 @@ class UserController extends Controller
             $user->email=$request->email;
             $actual=now()->timestamp;
             $user->updated_at = $actual;
-            $user->save();
 
+            //Actualizar datos de las prendas y juguetes
+            $registros_prenda= Prenda::where('user_id','=',$request->id)->get();
+            foreach ($registros_prenda as $filas) {
+                $filas->user_name = $request->name;
+                $filas->save();
+            }
+            $user->save();
+            
+            $registros_juguete = Juguete::where('user_id','=',$request->id)->get();
+            foreach ($registros_juguete as $filas_j) {
+                $filas_j->user_name = $request->name;
+                $filas_j->save();
+            }
+            //
             return redirect()->route('users.index')
                 ->with('success', 'Datos actualizados con exito!');
         }
@@ -125,10 +140,17 @@ class UserController extends Controller
     public function destroy($id)
     {
         User::find($id)->delete();
-        Prenda::find($id)->delete();
-
-        return redirect()->route('logout')
+        //borrar prendas y juguetes del usuario
+        $prendas_borrar = Prenda::where('user_id','=',$id)->get();
+        foreach ($prendas_borrar as $borrar) {
+            $borrar->delete();
+        }
+        $juguetes_borrar = Juguete::where('user_id','=',$id)->get();
+        foreach ($juguetes_borrar as $borrar_j) {
+            $borrar_j->delete();
+        }
+            return redirect()->route('logout')
             ->with('success', 'Usuario eliminado con exito!')
-            ->header('login',route('/'));
+            ->header('login',route('home'));
     }
 }
