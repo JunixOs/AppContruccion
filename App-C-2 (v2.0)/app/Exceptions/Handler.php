@@ -5,6 +5,7 @@ namespace App\Exceptions;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Throwable;
 use Illuminate\Database\QueryException;
+use Illuminate\Support\Facades\Auth;
 
 class Handler extends ExceptionHandler
 {
@@ -46,14 +47,15 @@ class Handler extends ExceptionHandler
             //
         });
     }
-/*
     public function render($request, Throwable $e) //viene por defecto en laravel
     {
         if ($e instanceof QueryException) {
-
-            // Opcionalmente, puedes retornar una vista personalizada para el error de base de datos
-            return response()->view('viewerrores.errorconexionDB', [], 500);
+            if (Auth::id()==null){
+                Auth::logout();
+            }
+            // retornar una vista para el error de base de datos
+            return response()->view('viewerrores.errorconexionDB');
     }
     return parent::render($request, $e);
-    }*/
+    }
 }

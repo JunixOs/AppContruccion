@@ -92,8 +92,8 @@
                             
                         </li>
                         <!-- Authentication Links -->
-                        @guest
-                            @if (Route::has('login'))
+                        @guest <!--Verifica si el usuario esta autenticado, si no lo esta muestra lo de arriba, su opuesto es @ auth-->
+                            @if (Route::has('login')) <!--Verifica si la ruta 'login' existe, esta ruta esta disponible al no estar loggeado y no lo esta cuando se loggea el usuario-->
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ route('login') }}">{{ __('Iniciar sesion') }}</a>
                                 </li>
@@ -104,7 +104,7 @@
                                     <a class="nav-link" href="{{ route('register') }}">{{ __('Registrarse') }}</a>
                                 </li>
                             @endif
-                        @else
+                        @else 
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     @if ( Auth::user()->imagen_perfil==null)
@@ -116,6 +116,8 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="{{ route('users.index') }}">{{ __('Ver datos') }}</a>
+                                    
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
@@ -126,7 +128,6 @@
                                         @csrf
                                     </form>
 
-                                    <a class="dropdown-item" href="{{ route('users.index') }}">{{ __('Ver datos') }}</a>
                                 </div>
                             </li>
                         @endguest

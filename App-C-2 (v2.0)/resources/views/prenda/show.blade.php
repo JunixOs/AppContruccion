@@ -34,7 +34,7 @@
                             </div>
                             <div class="form-group mb-2 mb20">
                                 <strong>Descripcion:</strong>
-                                {{ $prenda->descripcion }}
+                                <p>{{ $prenda->descripcion }}</p>
                             </div>
                             <div class="form-group mb-2 mb20">
                                 <strong>Precio:</strong>
@@ -49,7 +49,7 @@
                                 {{ $prenda->talla }}
                             </div>
                             <div class="form-group mb-2 mb20">
-                                <strong>Tiempo Uso:</strong>
+                                <strong>Tiempo de uso:</strong>
                                 @if ($prenda->tiempo_uso>365)
                                 {{ round(($prenda->tiempo_uso)/365,2) }} años
                                 @elseif ($prenda->tiempo_uso>30)
@@ -61,7 +61,7 @@
                                 @endif
                             </div>
                             <div class="form-group mb-2 mb20">
-                                <strong>User ID:</strong>
+                                <strong>ID de usuario:</strong>
                                 {{ $prenda->user_id }}
                             </div>
                             <div class="form-group mb-2 mb20">

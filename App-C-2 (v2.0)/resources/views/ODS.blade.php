@@ -54,7 +54,7 @@
                                     Pero esto no solo depende solo de nuestros líderes mundiales. Cada persona se puede beneficiar de un mundo más próspero, inclusivo y resiliente. Todos podemos hacer algo al respecto, con independencia de que formemos parte de un gobierno o de la sociedad civil, dirijamos una empresa o un hogar, estemos escolarizados o no.
                                 </p>
                                 <div class="centrar-objeto">
-                                    <img src="{{ asset('/images/Desarrollo-Sostenible.webp')}}" alt="Desarrollo sostenible" width="500px" height="400px" class="imagen">
+                                    <img src="{{ asset('/images/Desarrollo-Sostenible.webp')}}" alt="Desarrollo sostenible" width="500px" height="400px" class="imagen" style="width: 40vw;height:50vh">
                                 </div>
                             </section>
                             <footer style="font-style:italic; font-family:Arial;">
@@ -83,7 +83,7 @@
                                     La creatividad, el conocimiento, la tecnología y los recursos financieros de toda la sociedad son necesarios para alcanzar los ODS en todos los contextos.
                                 </p>
                                 <div class="centrar-objeto">
-                                    <img src="{{asset('/images/Los 17 ODS.png')}}" alt="Los 17 ODS" width="700px" height="350px" class="imagen">
+                                    <img src="{{asset('/images/Los 17 ODS.png')}}" alt="Los 17 ODS"  class="imagen" style="width: 60vw;height: 50vh">
                                 </div>
                             </section>
                             <footer style="font-style:italic; font-family:Arial;">
@@ -103,7 +103,7 @@
                             </header>
                             <section>
                                 <p>
-                                    Para lograr crecimiento económico y desarrollo sostenible, es urgente reducir la huella ecológica mediante un cambio en los métodos de producción y consumo de bienes y recursos.
+                                    Este ODS se enfoca en lograr el crecimiento económico y desarrollo sostenible, para ello, es urgente reducir la huella ecológica mediante un cambio en los métodos de producción y consumo de bienes y recursos.
                                 </p>
                                 <p>
                                     La gestión eficiente de los recursos naturales compartidos y la forma en que se eliminan los desechos tóxicos y los contaminantes son vitales para lograr este objetivo. 
@@ -115,7 +115,7 @@
                                     Esto puede aportar a la seguridad alimentaria y llevarnos hacia una economía que utilice los recursos de manera más eficiente.
                                 </p>
                                 <div class="centrar-objeto">
-                                    <img src="{{asset('/images/ODS12.jpg')}}" alt="Los 17 ODS" width="900px" height="350px" class="imagen">
+                                    <img src="{{asset('/images/ODS12.jpg')}}" alt="Los 17 ODS" width="900px" height="350px" class="imagen" style="width: 60vw; height: 40vh">
                                 </div>
                             </section>
                             <footer style="font-style:italic; font-family:Arial;">

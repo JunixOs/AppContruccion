@@ -37,7 +37,7 @@
                         </div>
                         <div class="form-group mb-2 mb20">
                             <strong>Descripcion:</strong>
-                            {{ $juguete->descripcion }}
+                            <p>{{ $juguete->descripcion }}</p>
                         </div>
                         <div class="form-group mb-2 mb20">
                             <strong>Precio:</strong>

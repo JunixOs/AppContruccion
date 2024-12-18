@@ -54,15 +54,18 @@ class UserController extends Controller
     /**
      * Show the form for creating a new resource.
      */
+    /*
     public function create()
     {
         $user = new User();
         return view('user.create', compact('user'));
     }
+    */
     public function confirmate($id)
     {
         return view('user.confirmationdelete', compact('id')); //Paso la variable a la vista, para poder usarlo ahi
     }
+
     /**
      * Store a newly created resource in storage.
      */
@@ -149,8 +152,9 @@ class UserController extends Controller
         foreach ($juguetes_borrar as $borrar_j) {
             $borrar_j->delete();
         }
-            return redirect()->route('logout')
-            ->with('success', 'Usuario eliminado con exito!')
-            ->header('login',route('home'));
+        Auth::logout(); 
+        return redirect()->route('logout')
+        ->with('success', 'Usuario eliminado con exito!')
+        ->header('login',route('home'));
     }
 }

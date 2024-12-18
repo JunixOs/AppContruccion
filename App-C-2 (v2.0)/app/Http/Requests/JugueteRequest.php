@@ -24,7 +24,7 @@ class JugueteRequest extends FormRequest
         return [
 			'descripcion' => 'required|string',
 			'precio' => 'nullable|numeric|regex:/^\d{1,4}(\.\d{1,2})?$/',
-			'tiempo_uso' => 'required',
+			'tiempo_uso' => 'required|numeric|between:0,1500',
 			'user_id' => 'required|exists:users,id',
 			'user_name' => 'required|string',
 			'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg,bmp,webp,tiff|max:2048',
