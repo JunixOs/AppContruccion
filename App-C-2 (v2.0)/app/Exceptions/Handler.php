@@ -5,8 +5,10 @@ namespace App\Exceptions;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Throwable;
 use Illuminate\Database\QueryException;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Illuminate\Support\Facades\Auth;
-
+use Symfony\Component\Translation\Exception\NotFoundResourceException;
+use Symfony\Component\ErrorHandler\Error\UndefinedFunctionError;
 class Handler extends ExceptionHandler
 {
     /**
@@ -50,12 +52,24 @@ class Handler extends ExceptionHandler
     public function render($request, Throwable $e) //viene por defecto en laravel
     {
         if ($e instanceof QueryException) {
-            if (Auth::id()==null){
+            //si la base de datos falla cuando un usuario esta loggeado
+            if (Auth::check()){
                 Auth::logout();
             }
-            // retornar una vista para el error de base de datos
+            //error de base de datos
             return response()->view('viewerrores.errorconexionDB');
-    }
+        }
+        if ($e instanceof NotFoundHttpException) {
+            // manejjo de un error 404
+            // lanzar uns excepción para redirigir a otra URL
+            return response()->view('viewerrores.error404');
+        }
+        if ($e instanceof NotFoundResourceException) {
+            return response()->view('viewerrores.recursonoencontrado');
+        }
+        if ($e instanceof UndefinedFunctionError) {
+            return response()->view('viewerrores.funcionnoencontrada');
+        }
     return parent::render($request, $e);
     }
 }

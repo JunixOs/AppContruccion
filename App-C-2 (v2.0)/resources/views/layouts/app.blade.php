@@ -24,25 +24,7 @@
             background-repeat: no-repeat;
             background-attachment: fixed;
             background-size: cover;
-            /*animation: SwitchImage 150s infinite;*/
         }
-        /*@keyframes SwitchImage {
-        0% {
-            background-image: image-set("{{asset('/images/IMG-1.jpeg')}}");
-            background-size: cover;
-        }
-
-        50% {
-            background-image: image-set("{{asset('/images/1287136.jpg')}}");
-            background-size: cover;
-        }
-
-        100% {
-            background-image: image-set("{{asset('/images/Imagen2.jpeg')}}");
-            background-size: cover;
-        }
-        }
-        */
         .circle{
             background-size: cover;
             border-radius: 50%;
