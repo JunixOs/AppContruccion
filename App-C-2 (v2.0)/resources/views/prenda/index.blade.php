@@ -39,7 +39,7 @@
                         <div style="display: flex; justify-content: space-between; align-items: center;">
 
                             <span id="card_title">
-                                {{ __('Prendas') }}
+                                {{ __('Prendas') }} <!--Funcion que me permite la traduccion, debo tener un archivo de raduccion en esta carpeta, pero eso sera en un futuro-->
                             </span>
                             <div class="float-right">
                                 <a href="{{ route('redirect') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">

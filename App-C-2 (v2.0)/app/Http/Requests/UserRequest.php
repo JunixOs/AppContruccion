@@ -23,7 +23,7 @@ class UserRequest extends FormRequest
                     $fail("El nombre de usuario debe tener menos de 5 palabras, actualmente tiene $wordCount.");
                 }
             }],
-			'email' => 'required|string',
+			'email' => 'required|string|email',
 			'telefono' => 'required|numeric|digits_between:5,10',
             'extension_telefonica' => 'required|string',
             'imagen_perfil' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,bmp,webp,tiff|max:2048'

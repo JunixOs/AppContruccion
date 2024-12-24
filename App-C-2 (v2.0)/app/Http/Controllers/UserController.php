@@ -80,7 +80,7 @@ class UserController extends Controller
     /**
      * Actualiza la info del usuario
      */
-    public function update(UserRequest $request, User $user, Prenda $prenda)
+    public function update(UserRequest $request, User $user)
     {
         if($request->validated())
         {

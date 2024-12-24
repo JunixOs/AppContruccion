@@ -57,7 +57,7 @@
             <input type="file" name="image" class="form-control @error('image') is-invalid @enderror" value="{{ old('image', $juguete?->image) }}" id="image">
             {!! $errors->first('image', '<div class="invalid-feedback" role="alert"><strong>:message</strong></div>') !!}
             @if($juguete->image)
-                <p style="padding-top: 15px"><center>Vista previa</center></p>
+                <p style="padding-top: 15px"><center>Vista anterior imagen</center></p>
                 <div class="centrar">
                     <img src="{{ url('image-juguete/'. $juguete->id) }}" alt="Imagen previa" style="max-width: 50%; height: auto;" class="circulo">
                 </div>
