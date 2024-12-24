@@ -1,2 +1,2 @@
 # AppContruccion
-Aplicacion web y de escritorio orientado al ODS 12.
+Aplicacion web orientado al ODS 12.
