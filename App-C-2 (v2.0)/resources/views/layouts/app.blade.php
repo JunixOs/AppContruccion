@@ -43,12 +43,12 @@
                 </button>
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <!-- Left Side Of Navbar -->
+                    <!-- Izquierda de la barra de navegacion -->
                     <ul class="navbar-nav me-auto">
                         <li class="nav-item dropdown">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                 {{ __('Secciones') }}
-                            </a>
+                            </a> <!--Desplegable SECCIONES-->
                             
                             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" href="{{ route('prendas.index') }}">{{ __('Ver Prendas') }}</a>
@@ -58,22 +58,24 @@
                         <li class="nav-item dropdown">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                 {{ __('Sobre el proyecto') }}
-                            </a>
+                            </a> <!--Desplegable SOBRE EL PROYECTO-->
                             
                             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" href="{{ route('ODS') }}">{{ __('¿Que son los ODS?') }}</a>
-                                <a class="dropdown-item" href="{{ route('objetivo-proyecto') }}">{{ __('¿Cual es el objetivo de ClothSha?')}}</a>
+                                <a class="dropdown-item" href="{{ route('objetivo-proyecto') }}">{{ __('¿Cuanto contaminan nuestras prendas y juguetes?')}}</a>
+                                <a class="dropdown-item" href="{{ route('cuidadoprenda')}}">{{ __('Consejos para el cuidado de la ropa')}}</a>
+                                <a class="dropdown-item" href="{{ route('cuidadojuguetes')}}">{{ __('Consejos para el cuidado de los juguetes')}}</a>
                             </div>
                         </li>
                         <!--<a class="nav-link" href="{ { route('aboutus') }}">{ { __('Sobre nosotros') }}</a>-->
                     </ul>
                     
-                    <!-- Right Side Of Navbar -->
+                    <!-- Derecha de la barra de navegacion -->
                     <ul class="navbar-nav ms-auto">
                         <li>
                             
                         </li>
-                        <!-- Authentication Links -->
+                        <!-- Links -->
                         @guest <!--Verifica si el usuario esta autenticado, si no lo esta muestra lo de arriba, su opuesto es @ auth-->
                             @if (Route::has('login')) <!--Verifica si la ruta 'login' existe, esta ruta esta disponible al no estar loggeado y no lo esta cuando se loggea el usuario-->
                                 <li class="nav-item">

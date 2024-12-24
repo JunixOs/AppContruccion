@@ -25,6 +25,10 @@
             display: grid;
             align-content: center;
         }
+        .scroll{
+        max-width: 300px;
+        word-wrap: break-word; 
+        }
     </style>
     <div class="container-fluid">
         <div class="row">
@@ -84,7 +88,7 @@
                                                 </div>
                                                 @endif
                                             </td>
-											<td>{{ $juguete->descripcion }}</td>
+											<td class="scroll">{{ $juguete->descripcion }}</td>
                                             @if ($juguete->precio==null or $juguete->precio==0)
                                                 <td>Gratis</td>
 

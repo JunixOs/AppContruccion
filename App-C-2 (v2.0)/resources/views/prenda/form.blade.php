@@ -2,6 +2,17 @@
     .docker{
         display: flex; 
     }
+
+    .circulo{
+        background-size: cover;
+        border-radius: 50%;
+        margin: 0 auto;
+        padding-top: 30px;
+    }
+    .centrar{
+        display: grid;
+        align-content: center;
+    }
 </style>
 <div class="row padding-1 p-1">
     <div class="col-md-12">
@@ -42,14 +53,25 @@
             {!! $errors->first('user_name', '<div class="invalid-feedback" role="alert"><strong>:message</strong></div>') !!}
         </div>
         <!--image-->
+        @if ($prenda->id==null) <!--Si la prenda se esta creando muestra esto de aqui-->
         <div class="form-group mb-2 mb20">
             <label for="image" class="form-label">{{ __('Imagen') }}</label>
-            <input type="file" name="image" class="form-control @error('image') is-invalid @enderror" value="{{ old('image', $prenda?->image) }}" id="image" placeholder="Imagen" required>
+            <input type="file" name="image" class="form-control @error('image') is-invalid @enderror" value="{{ old('image', $prenda?->image) }}" id="image" required>
             {!! $errors->first('image', '<div class="invalid-feedback" role="alert"><strong>:message</strong></div>') !!}
-            @if(session('image'))
-                <img src="{{ session('image') }}" alt="Imagen previa" width="100">
+        </div>
+        @else <!--Si la prenda se esta editando, muestra esto-->
+        <div class="form-group mb-2 mb20">
+            <label for="image" class="form-label">{{ __('Imagen') }}</label>
+            <input type="file" name="image" class="form-control @error('image') is-invalid @enderror" value="{{ old('image', $prenda?->image) }}" id="image">
+            {!! $errors->first('image', '<div class="invalid-feedback" role="alert"><strong>:message</strong></div>') !!}
+            @if($prenda->image)
+                <p style="padding-top: 15px"><center>Vista previa</center></p>
+                <div class="centrar">
+                    <img src="{{ url('image-prenda/'. $prenda->id) }}" alt="Imagen previa" style="max-width: 50%; height: auto;" class="circulo">
+                </div>
             @endif
         </div>
+        @endif
     </div>
         <div class="docker">
             <div style="padding-right: 5px;">

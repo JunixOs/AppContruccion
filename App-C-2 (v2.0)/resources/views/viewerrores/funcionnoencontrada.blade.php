@@ -1,6 +1,6 @@
 @extends('viewerrores.plantilla')
 
 @section('contenido')
-{{ __('HA OCURRIDO UN ERRROR') }}
-{{ __('Ha ocurrido un error el la logia de la aplicacion.') }}
+<p>{{ __('HA OCURRIDO UN ERRROR') }}</p>
+<p>{{ __('Ha ocurrido un error el la logica de la aplicacion.') }}</p>
 @endsection

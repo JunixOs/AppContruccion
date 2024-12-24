@@ -6,23 +6,23 @@ use Illuminate\Foundation\Http\FormRequest;
 
 class UserRequest extends FormRequest
 {
-    /**
-     * Determine if the user is authorized to make this request.
-     */
     public function authorize(): bool
     {
         return true;
     }
 
     /**
-     * Get the validation rules that apply to the request.
-     *
      * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
      */
     public function rules(): array
     {
         return [
-			'name' => 'required|string',
+			'name' => ['required', 'string', function ($attribute, $value, $fail) {
+                $wordCount = str_word_count($value); // Cuenta las palabras en la descripción
+                if ($wordCount > 5) {
+                    $fail("El nombre de usuario debe tener menos de 5 palabras, actualmente tiene $wordCount.");
+                }
+            }],
 			'email' => 'required|string',
 			'telefono' => 'required|numeric|digits_between:5,10',
             'extension_telefonica' => 'required|string',

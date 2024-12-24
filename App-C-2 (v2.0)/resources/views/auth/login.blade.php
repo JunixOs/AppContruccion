@@ -6,7 +6,11 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">{{ __('Inicio de sesion') }}</div>
-
+                @if (Session::has('success')) <!--Esto comprueba si hay un mensaje llamado success y luego muestra ese mensaje temporal-->
+                <div class="alert alert-success m-4">
+                    <p>{{ Session::get('success') }}</p>
+                </div>
+                @endif
                 <div class="card-body">
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
@@ -59,11 +63,12 @@
                                     {{ __('Iniciar sesion') }}
                                 </button>
 
-                                @if (Route::has('password.request'))
-                                    <a class="btn btn-link" href="{{ route('password.request') }}">
-                                        {{ __('Olvide mi contraseña') }}
+                                <!--@ if (Route::has('password.request'))
+                                    <a class="btn btn-link" href="{ { route('password.request') }}">
+                                        { { __('Olvide mi contraseña') }}
                                     </a>
-                                @endif
+                                @ endif 
+                                -->
                             </div>
                         </div>
                     </form>

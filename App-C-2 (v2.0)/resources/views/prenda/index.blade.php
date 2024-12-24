@@ -25,6 +25,11 @@
         width: 100%;
         border-collapse: collapse;
     }
+
+    .scroll{
+        max-width: 300px;
+        word-wrap: break-word; 
+    }
 </style>
     <div class="container-fluid">
         <div class="row">
@@ -84,7 +89,7 @@
                                                 </div>
                                                 @endif
                                             </td>
-											<td>{{ $prenda->descripcion }}</td>
+											<td class="scroll">{{ $prenda->descripcion }}</td>
                                             @if ($prenda->precio==null or $prenda->precio==0)
                                                 <td>Gratis</td>
 

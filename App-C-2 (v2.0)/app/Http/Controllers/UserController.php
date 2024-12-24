@@ -8,6 +8,7 @@ use App\Models\Juguete;
 use App\Models\Prenda;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 /*
     User: yonel.ordonez@unas.edu.pe
     Contra: user123
@@ -25,7 +26,7 @@ use Illuminate\Support\Facades\Auth;
 class UserController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Sirve para extraer las imagenes de perfil de los usuarios de la BD
      */
     public function image($id)
     {
@@ -51,34 +52,13 @@ class UserController extends Controller
             ->with('i', (request()->input('page', 1) - 1) * $users->perPage());
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    /*
-    public function create()
-    {
-        $user = new User();
-        return view('user.create', compact('user'));
-    }
-    */
     public function confirmate($id)
     {
         return view('user.confirmationdelete', compact('id')); //Paso la variable a la vista, para poder usarlo ahi
     }
 
     /**
-     * Store a newly created resource in storage.
-     */
-    public function store(UserRequest $request)
-    {
-        User::create($request->validated());
-
-        return redirect()->route('users.index')
-            ->with('success', 'User created successfully.');
-    }
-
-    /**
-     * Display the specified resource.
+     * Muestra toda las info del usuario
      */
     public function show($id)
     {
@@ -88,7 +68,7 @@ class UserController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * Muestra el archivo form.blade.php y envia la info del usuario
      */
     public function edit($id)
     {
@@ -98,7 +78,7 @@ class UserController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * Actualiza la info del usuario
      */
     public function update(UserRequest $request, User $user, Prenda $prenda)
     {
@@ -143,6 +123,7 @@ class UserController extends Controller
     public function destroy($id)
     {
         User::find($id)->delete();
+        
         //borrar prendas y juguetes del usuario
         $prendas_borrar = Prenda::where('user_id','=',$id)->get();
         foreach ($prendas_borrar as $borrar) {
@@ -153,8 +134,10 @@ class UserController extends Controller
             $borrar_j->delete();
         }
         Auth::logout(); 
-        return redirect()->route('logout')
-        ->with('success', 'Usuario eliminado con exito!')
-        ->header('login',route('home'));
+
+        Session::flash('success', 'Tu cuenta ha sido eliminada con éxito.'); //Esto almacena un mensaje temporal.
+
+
+        return redirect()->route('home');
     }
 }

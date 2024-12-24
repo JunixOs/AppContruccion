@@ -35,7 +35,7 @@ class PrendaController extends Controller
         return response($imagedata, 200)->header('Content-Type', $mimetype);
     }
     /**
-     * Display a listing of the resource.
+     * Muestra todas las prendas subidas
      */
     public function index()
     {
@@ -67,7 +67,7 @@ class PrendaController extends Controller
         return view('prenda.confirmationdelete', compact('id')); //Paso la variable a la vista, para poder usarlo ahi
     }
     /**
-     * Show the form for creating a new resource.
+     * Muestra el formulario para crear una prenda
      */
     public function create()
     {
@@ -76,7 +76,7 @@ class PrendaController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Almacena una nueva prenda 
      */
     public function store(PrendaRequest $request)
     {
@@ -119,7 +119,7 @@ class PrendaController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * Muestra los datos de la prenda a detalle
      */
     public function show($id)
     {
@@ -138,7 +138,7 @@ class PrendaController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * Muestra el formulario
      */
     public function edit($id)
     {
@@ -166,7 +166,7 @@ class PrendaController extends Controller
             }
             */
             
-            if ($request->hasFile('image'));
+            if ($request->hasFile('image')) //Si hay una imagen en la actualizacion entonces guarda todo
             {  
                 //Obtener la imagen
                 $image = $request->file('image');
@@ -175,21 +175,32 @@ class PrendaController extends Controller
                 $imagedata= file_get_contents($image->getRealPath());
                 $prenda->image = $imagedata; //tipo blob
 
+                $prenda->precio = $request->precio;
+                $prenda->descripcion = $request->descripcion;
+                $prenda->tiempo_uso = $request->tiempo_uso;
+                $prenda->user_id = $request->user_id;
+                $prenda->user_name = $request->user_name;
+                $prenda->talla = $request->talla;
+                $prenda->save();
                 /*
                 // Asignar una URL para acceder a la imagen
                 $prenda->imageurl = route('prenda.image', ['id' => $prenda->id]); */
-            }
-            $prenda->precio = $request->precio;
-            $prenda->descripcion = $request->descripcion;
-            $prenda->tiempo_uso = $request->tiempo_uso;
-            $prenda->user_id = $request->user_id;
-            $prenda->user_name = $request->user_name;
-            $prenda->talla = $request->talla;
-            $prenda->save();
-            //$prenda->update($request->validated());
-
-            return redirect()->route('prendas.index')
+                return redirect()->route('prendas.index')
                 ->with('success', 'Prenda actualizada exitosamente');
+            }
+            else {
+                $prenda->precio = $request->precio;
+                $prenda->descripcion = $request->descripcion;
+                $prenda->tiempo_uso = $request->tiempo_uso;
+                $prenda->user_id = $request->user_id;
+                $prenda->user_name = $request->user_name;
+                $prenda->talla = $request->talla;
+                $prenda->save();
+                return redirect()->route('prendas.index')
+                ->with('success', 'Prenda actualizada exitosamente');
+            }
+
+            //$prenda->update($request->validated());
         }
     }
 

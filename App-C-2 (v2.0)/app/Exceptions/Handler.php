@@ -2,6 +2,7 @@
 
 namespace App\Exceptions;
 
+use ErrorException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Throwable;
 use Illuminate\Database\QueryException;
@@ -9,6 +10,9 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Illuminate\Support\Facades\Auth;
 use Symfony\Component\Translation\Exception\NotFoundResourceException;
 use Symfony\Component\ErrorHandler\Error\UndefinedFunctionError;
+use Illuminate\Http\Exceptions\PostTooLargeException;
+use Symfony\Component\ErrorHandler\Error\FatalError;
+
 class Handler extends ExceptionHandler
 {
     /**
@@ -69,6 +73,21 @@ class Handler extends ExceptionHandler
         }
         if ($e instanceof UndefinedFunctionError) {
             return response()->view('viewerrores.funcionnoencontrada');
+        }
+        if ($e instanceof ErrorException) { //Por si se ingresa un valor no valido en una ruta que llama a una funcion
+            return response()->view('viewerrores.errorexception');
+        }
+        if ($e instanceof PostTooLargeException){
+            return response()->view('viewerrores.posttoolarge');
+        }
+        if($e instanceof \PDOException){
+            return response()->view('viewerrores.errorconexionDB');
+        }
+        if ($e instanceof FatalError) {
+            if (Auth::check()){
+                Auth::logout();
+            }
+            return response()->view('viewerrores.errorfatal');
         }
     return parent::render($request, $e);
     }

@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 Route::get('/', function () {
-    return view('auth.login');
+    return view('home');
 })->middleware('guest'); //Solo los no autenticados pueden acceder a esta ruta
 
 Auth::routes(); //Genera las rutas para la autenticacion 'login', cerrar sesion, registrarse, verificar etc.
@@ -24,11 +24,11 @@ Route::get('/eliminar-prenda/{id}',[App\Http\Controllers\PrendaController::class
 Route::get('/eliminar-juguete/{id}',[App\Http\Controllers\JugueteController::class, 'confirmation'])->name('confirmacion-juguetes');
 Route::resource('prendas', App\Http\Controllers\PrendaController::class)->middleware('auth');
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->middleware('auth')->name('home');
-Route::view('/principal','home')->middleware('auth')->name('principal');
+Route::view('/principal','home')->name('principal');
 //Route::view('/sobre_nosotros', 'aboutus')->name('aboutus');
 Route::resource('juguetes', App\Http\Controllers\JugueteController::class)->middleware('auth'); //Me permite acceder a los metodos de la funcion controladora
 
-Route::get('/eliminar-usuario/{id}',[App\Http\Controllers\UserController::class, 'confirmate'])->middleware('auth')->name('borrar-usuario');
+Route::get('/eliminar-usuario/{id}',[App\Http\Controllers\UserController::class, 'confirmate'])->middleware('auth')->name('borrar-usuario'); // Va a la confirmacion de eliminacion de cuenta
 Route::resource('users', App\Http\Controllers\UserController::class)->middleware('auth'); //
 
 Route::get('image-juguete/{id}',[App\Http\Controllers\JugueteController::class, 'image']);
@@ -36,4 +36,6 @@ Route::get('image-prenda/{id}', [App\Http\Controllers\PrendaController::class, '
 Route::get('image-user/{id}',[App\Http\Controllers\UserController::class, 'image']);
 Route::view('/ods','ODS')->name('ODS');
 Route::view('/objetivo-app','objetivodelproyecto')->name('objetivo-proyecto');
+Route::view('/cuidado-prenda', 'cuidadoprenda')->name('cuidadoprenda');
+Route::view('/cuidado-juguete','cuidadojuguetes')->name('cuidadojuguetes');
 

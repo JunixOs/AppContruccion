@@ -7,6 +7,17 @@
         align-items: center;
         justify-content: center;
         }
+
+    .circulo{
+        background-size: cover;
+        border-radius: 50%;
+        margin: 0 auto;
+        padding-top: 30px;
+    }
+    .centrar{
+        display: grid;
+        align-content: center;
+    }
 </style>
 <div class="row padding-1 p-1">
     <div class="col-md-12">
@@ -44,13 +55,18 @@
                     {!! $errors->first('telefono', '<div class="invalid-feedback" role="alert"><strong>:message</strong></div>') !!}
             </div>
         </div>
-
+    
         <div class="form-group mb-2 mb20">
             <label for="imagen_perfil" class="form-label">{{ __('Foto de perfil') }}</label>
             <input type="file" name="imagen_perfil" class="form-control @error('imagen_perfil') is-invalid @enderror" value="{{ old('imagen_perfil', $user?->imagen_perfil) }}" id="imagen_perfil" placeholder="file">
             {!! $errors->first('imagen_perfil', '<div class="invalid-feedback" role="alert"><strong>:message</strong></div>') !!}
         </div>
-        
+        @if ($user->imagen_perfil)
+        <p style="padding-top: 15px"><center>Vista previa</center></p>
+        <div class="centrar">
+            <img src="{{ url('image-user/'. $user->id) }}" alt="Imagen previa" style="max-width: 50%; height: auto;" class="circulo">
+        </div>
+        @endif
     </div>
     <div class="docker">
         <div style="padding-right: 5px">

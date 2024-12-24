@@ -6,28 +6,29 @@ use Illuminate\Foundation\Http\FormRequest;
 
 class JugueteRequest extends FormRequest
 {
-    /**
-     * Determine if the user is authorized to make this request.
-     */
+
     public function authorize(): bool
     {
         return true;
     }
 
     /**
-     * Get the validation rules that apply to the request.
-     *
      * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
      */
     public function rules(): array
     {
         return [
-			'descripcion' => 'required|string',
+			'descripcion' => ['required', 'string', function ($attribute, $value, $fail) {
+                $wordCount = str_word_count($value); // Cuenta las palabras en la descripción
+                if ($wordCount > 90) {
+                    $fail("La descripción debe tener menos de 90 palabras, actualmente tiene $wordCount.");
+                }
+            }],
 			'precio' => 'nullable|numeric|regex:/^\d{1,4}(\.\d{1,2})?$/',
 			'tiempo_uso' => 'required|numeric|between:0,1500',
 			'user_id' => 'required|exists:users,id',
 			'user_name' => 'required|string',
-			'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg,bmp,webp,tiff|max:2048',
+			'image' => 'image|mimes:jpeg,png,jpg,gif,svg,bmp,webp,tiff|max:2048',
         ];
     }
 }

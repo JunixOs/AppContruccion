@@ -25,6 +25,11 @@
         width: 100%;
         border-collapse: collapse;
     }
+
+    .scroll{
+        max-width: 300px;
+        word-wrap: break-word; 
+    }
 </style>
     <div class="container-fluid">
         <div class="row">
@@ -43,7 +48,7 @@
                               </div>
                              <div class="float-right">
                                 <a href="{{ route('prendas.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
-                                  {{ __('Crear nuevo') }}
+                                  {{ __('Crear Nuevo') }}
                                 </a>
                               </div>
                         </div>
@@ -85,7 +90,7 @@
                                                     @endif
                                                 </div>
                                             </td>
-											<td>{{ $prenda->descripcion }}</td>
+											<td class="scroll">{{ $prenda->descripcion }}</td>
                                             @if ($prenda->precio==null or $prenda->precio==0)
                                                 <td>Gratis</td>
 

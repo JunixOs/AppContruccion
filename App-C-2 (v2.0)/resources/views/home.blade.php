@@ -5,18 +5,24 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Principal') }}</div>
+                <div class="card-header">{{ __('Pagina Principal') }}</div>
 
-                    <div class="card-body">
+                    <div class="card-body" style="text-align:center;font-weight:bold;font-style:oblique">
                         @if (session('status'))
                             <div class="alert alert-success" role="alert">
                                 {{ session('status') }}
                             </div>
                         @endif
 
-                        {{ __('Has iniciado sesion correctamente!!') }} <br>
-                        {{ __('Por favor seleccione una opcion de la barra de navegacion en la parte superior de su pantalla') }}
-                    
+                        @guest
+                            <p>
+                                {{ __('Por favor inicie sesion o registrese')}}
+                            </p>
+                        @else
+                        <p>{{ __('Has iniciado sesion correctamente!!') }}</p> <br>
+                        <p>{{ __('Por favor seleccione una opcion de la barra de navegacion en la parte superior de su pantalla') }}</p>
+                        @endguest
+                        
                     </div>
                     <div class="card-body">
                         {{ __('Bienvenido a ClothSha, esta es una pagina web interactiva que permite a los usuarios subir imágenes de prendas de vestir y juguetes, 

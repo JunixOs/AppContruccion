@@ -1,6 +1,6 @@
 @extends('viewerrores.plantilla')
 
 @section('contenido')
-{{ __('ERROR-404') }}
-{{ __('El recurso no se ha encontrado.') }}
+<p>{{ __('ERROR-404') }}</p>
+<p>{{ __('El recurso no se ha encontrado.') }}</p>
 @endsection

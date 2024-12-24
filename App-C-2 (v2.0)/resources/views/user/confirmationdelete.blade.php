@@ -100,7 +100,7 @@
     <div class="card">
         <div class="card-content">
             <p class="card-heading">¿Esta seguro que desea eliminar su usuario?</p>
-            <p class="card-description">Esta accion es irreversible</p>
+            <p class="card-description">Se eliminara toda su informacion, esta accion es irreversible</p>
         </div>
         <form action="{{ route('users.destroy',$id) }}" method="POST">
             <div class="card-button-wrapper">

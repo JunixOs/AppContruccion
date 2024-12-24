@@ -12,9 +12,7 @@ use App\Models\User;
  */
 class JugueteController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+
     public function index()
     {
         $juguetes = Juguete::paginate();
@@ -49,25 +47,21 @@ class JugueteController extends Controller
     
         return response($imagedata, 200)->header('Content-Type', $mimetype);
     }
-    /**
-     * Show the form for creating a new resource.
-     */
+
     public function create()
     {
         $juguete = new Juguete();
         return view('juguete.create', compact('juguete'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
+
     public function store(JugueteRequest $request)
     {
         if($request->validated())
         {
 
             $juguete = new Juguete();
-            if ($request->hasFile('image'));
+            if ($request->hasFile('image'))
             {  
                 //Obtener la imagen
                 $image = $request->file('image');
@@ -89,9 +83,7 @@ class JugueteController extends Controller
 
     }
 
-    /**
-     * Display the specified resource.
-     */
+
     public function show($id)
     {
         $data = Juguete::find($id);
@@ -104,9 +96,7 @@ class JugueteController extends Controller
         return view('juguete.show', compact('juguete','user'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
+
     public function edit($id)
     {
         $juguete = Juguete::find($id);
@@ -114,34 +104,46 @@ class JugueteController extends Controller
         return view('juguete.edit', compact('juguete'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(JugueteRequest $request, Juguete $juguete)
     {
-        if ($request->hasFile('image'));
-        {  
-            //Obtener la imagen
-            $image = $request->file('image');
-
-            //Leer como binario
-            $imagedata= file_get_contents($image->getRealPath());
-            $juguete->image = $imagedata; //tipo blob
-
-            /*
-            // Asignar una URL para acceder a la imagen
-            $juguete->imageurl = route('jugu$juguete.image', ['id' => $juguete->id]); */
+        if ($request->validated())
+        {
+            if ($request->hasFile('image'))
+            {  
+                //Obtener la imagen
+                $image = $request->file('image');
+    
+                //Leer como binario
+                $imagedata= file_get_contents($image->getRealPath());
+                $juguete->image = $imagedata; //tipo blob
+    
+                $juguete->precio = $request->precio;
+                $juguete->descripcion = $request->descripcion;
+                $juguete->tiempo_uso = $request->tiempo_uso;
+                $juguete->user_id = $request->user_id;
+                $juguete->user_name = $request->user_name;
+                $juguete->save();
+                //$juguete->update($request->validated());
+        
+                return redirect()->route('juguetes.index')
+                    ->with('success', 'Juguete actualizado exitosamente');
+                /*
+                // Asignar una URL para acceder a la imagen
+                $juguete->imageurl = route('jugu$juguete.image', ['id' => $juguete->id]); */
+            }
+            else {
+                $juguete->precio = $request->precio;
+                $juguete->descripcion = $request->descripcion;
+                $juguete->tiempo_uso = $request->tiempo_uso;
+                $juguete->user_id = $request->user_id;
+                $juguete->user_name = $request->user_name;
+                $juguete->save();
+                //$juguete->update($request->validated());
+        
+                return redirect()->route('juguetes.index')
+                    ->with('success', 'Juguete actualizado exitosamente');
+            }
         }
-        $juguete->precio = $request->precio;
-        $juguete->descripcion = $request->descripcion;
-        $juguete->tiempo_uso = $request->tiempo_uso;
-        $juguete->user_id = $request->user_id;
-        $juguete->user_name = $request->user_name;
-        $juguete->save();
-        //$juguete->update($request->validated());
-
-        return redirect()->route('juguetes.index')
-            ->with('success', 'Juguete actualizado exitosamente');
     }
 
 
